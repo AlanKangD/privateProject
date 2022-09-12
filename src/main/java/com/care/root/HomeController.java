@@ -36,11 +36,4 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping("/test")
-	public String test() {
-		logger.info("Hello my new Project now Starting ..!!!!!!!");
-		
-		return "test";
-	}
-	
 }
