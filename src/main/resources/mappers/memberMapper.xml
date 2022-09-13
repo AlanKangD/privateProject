@@ -3,9 +3,21 @@
 
 <mapper namespace="com.care.root.mybatis.MemberMapper">
 
+	<resultMap type="com.care.root.VO.MemberVO" id="member">
+		<id column="user_seq" property="userSeq"/>
+		<result column="id" property="id"/>
+		<result column="nick" property="nick"/>
+		<result column="pw" property="pw"/>
+		<result column="freedom" property="select"/>
+		<result column="registerDate" property="registerDate"/>
+	</resultMap>
+	
 
 	<insert id="register">
 		insert into member(id,nick,pw,freedom,registerDate) values(#{id},#{nick},#{pw},#{select},now()) 
 	</insert>
-
+	
+	<select id="userCheck" resultType="String">
+	     select count(1) count from member where id = '${id}'
+	</select>
 </mapper>

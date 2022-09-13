@@ -5,6 +5,10 @@ import com.care.root.VO.MemberVO;
 public interface MemberService {
 	
 	public void register(MemberVO vo);
-	public int userCheck(String chkId);
+	public String userCheck(MemberVO vo);
+	
+	
+	
+	
 
 }

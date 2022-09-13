@@ -1,10 +1,14 @@
 package com.care.root.VO;
 
+import java.sql.Date;
+
 public class MemberVO {
+	private int userSeq;
 	private String id; 
 	private String nick; 
 	private String pw;
 	private String select;
+	private Date registerDate;
 	public String getId() {
 		return id;
 	}
@@ -29,6 +33,19 @@ public class MemberVO {
 	public void setSelect(String select) {
 		this.select = select;
 	}
+	public int getUserSeq() {
+		return userSeq;
+	}
+	public void setUserSeq(int userSeq) {
+		this.userSeq = userSeq;
+	}
+	public Date getRegisterDate() {
+		return registerDate;
+	}
+	public void setRegisterDate(Date registerDate) {
+		this.registerDate = registerDate;
+	}
+	
 	
 	
 

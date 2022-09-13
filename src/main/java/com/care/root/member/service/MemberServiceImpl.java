@@ -29,10 +29,13 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public int userCheck(String chkId) {
-		mapper.userCheck(chkId);
+	public String userCheck(MemberVO vo) {
+		String check = mapper.userCheck(vo);
 		
-		return 0;
+		System.out.println("###### mapper check :: " + check);
+		
+		
+		return check;
 	}
 
 	

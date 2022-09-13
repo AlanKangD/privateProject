@@ -54,14 +54,21 @@
 	
 	 
 	function checkId() {
-		var chkId = $("#inputId").val();
-		console.log(chkId);
-		if(chkId != "") {			
+		var id = $("#inputId").val();
+		//console.log(chkId);
+		if(id != "") {			
 			$.ajax({
-				url : "/member/memberCheck?id="+chkId,
-				type : "GET",
+				url : "/member/memberCheck?id="+id,
+				type : 'GET',
 				success : function(result) {
 					console.log(result);
+					if(result == "1") {
+						$('input[name=idChk]').attr('value',result);
+						alert("중복된 아이디입니다.");
+					}else {	
+						$('input[name=idChk]').attr('value',result);
+						alert("사용할 수 있는 아이디 입니다!");
+					}
 				}, 
 				error : function () {
 					alert('문제발생!!!');
@@ -122,6 +129,7 @@
 	<input type="hidden" id="sendNick" name="nick" value="">
 	<input type="hidden" id="sendPw" name="pw" value="">
 	<input type="hidden" id="sendFreedom" name="select" value="">
+	<input type="hidden" id="idChk" name="idChk" value="">
 </form>
 
 
