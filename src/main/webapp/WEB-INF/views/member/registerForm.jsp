@@ -47,7 +47,15 @@
 			$('input[name=nick]').attr('value',nick);
 			$('input[name=pw]').attr('value',pw);
 			$('input[name=select]').attr('value',select);
-			registerData.submit();
+			
+			var idchk = $("#idChk").val();
+			
+		   if(idchk == "1") {
+				alert('아이디 중복체크를 해주세요! ');
+			}else if(idchk == "0"){
+				alert('register ready');
+				registerData.submit();
+			}
 		
 		}
 	}
