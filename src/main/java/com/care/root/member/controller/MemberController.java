@@ -38,26 +38,23 @@ public class MemberController {
 	
 	@PostMapping("/member/register")
 	public String register(MemberVO vo) {
-		System.out.println(" id : " + vo.getId());
-		System.out.println(" nick : " + vo.getNick());
-		System.out.println(" pw :  " + vo.getPw());
-		System.out.println(" select :  " + vo.getSelect());
 		logger.info("### user register tryinnggg~~~ :: " + vo.getId() + vo.getNick() + vo.getPw() + vo.getSelect());
 		ms.register(vo);
 		
-		return "redirect:/index";
+		return "redirect:popupRedirect";
+	}
+	@GetMapping("/member/popupRedirect")
+	public String popupRedirect() {
+		return "member/popupRedirect";
 	}
 	
 
 	@GetMapping("/member/memberCheck")
 	@ResponseBody 
 	public String memberChk(@RequestParam("id") String id) {
-		System.out.println("id check :: " + id);
 		MemberVO vo = new MemberVO();
 		vo.setId(id);
 		String chkOk = ms.userCheck(vo);
-	     //System.out.println("값 확인 :: " + dto.get("id")); 
-		System.out.println("service 에서 처리된 결과 값 출력  : " + chkOk);
 		
 		return chkOk;
 	}
