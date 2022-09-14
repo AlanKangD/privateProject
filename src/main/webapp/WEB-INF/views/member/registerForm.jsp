@@ -18,11 +18,11 @@
 		var pwChk = $("#inputChkPw").val();
 		var select = $("#inputSelect").val();
 		//alert("input check ==" + id + " nick [ " + nick + "] pw  [ " + pw + "] checkpw [ " + pwChk + "] select [ " + select " ]" );
-		console.log("id :: [ " +id +" ]");
-		console.log("nick :: [ " + nick + " ] ");
-		console.log("pw :: [ "+ pw + " ]");
-		console.log("pwChk :: [ "+ pwChk + " ]");
-		console.log("select :: [ "+ select + " ]");
+		//console.log("id :: [ " +id +" ]");
+		//console.log("nick :: [ " + nick + " ] ");
+		//console.log("pw :: [ "+ pw + " ]");
+		//console.log("pwChk :: [ "+ pwChk + " ]");
+		//console.log("select :: [ "+ select + " ]");
 		if(id == "") {
 			alert("아이디를 입력해주시요!");
 		} else if(nick == "") {
@@ -55,6 +55,7 @@
 			}else if(idchk == "0"){
 				alert('register ready');
 				registerData.submit();
+				//window.open("about:blank","_self").close();
 			}
 		
 		}
