@@ -44,6 +44,12 @@
 	    		contentType : "application/json; charset=utf-8",
 	    		success : function(result) {
 	    			alert('성공');
+	    			console.log(result);
+	    			if(result == "2") {
+	    				//$("#loginModal").load(window.location.href + "#loginModal");
+	    				console.log("ok");
+	    				location.reload();
+	    			}
 	    		},
 	    		error : function() {
 	    			alert('오류가 발생했습니다. 관리자에게 문의하세요!');
@@ -54,6 +60,11 @@
 	    
 	    
 	    function loginForm() {
+	    	if($("#loginModal").css("display") == "none") {
+	    		$("#loginModal").show();
+	    	}else {
+	    		$("#loginModal").hide();
+	    	}
 	    	
 	    	
 	    }
@@ -96,15 +107,22 @@
               </div>
               <div class="getting-started">
                 <!-- Get Started Button -->
-                <li class="main-btn pointer text-center animate"><a href="#">Get Started</a></li>
-              </div>
+                <li class="main-btn pointer text-center animate">
+                	<a onclick='javascript:loginForm()'>Get Started</a>
+                </li>
+             </div>
             </div>
           </div>
-              <div class="loginModal" style="background-color: white; ">
-              
-              	<input type="text" id="loginId" value="" placeholder="${userSession }">
-              	<input type="password" id="loginPw" value="" placeholder="비밀번호를 입력해주세요!">
-              	<button type="button" onclick="javascript:login()">login</button>
+              <div class="loginModal" id="loginModal" style="display : none; background-color: white; ">
+              	<span>${userSession }</span>
+              	<c:if test="${userSession == null }">
+	              	<input type="text" id="loginId" value="" placeholder="아이디를 입력해주세요!">
+	              	<input type="password" id="loginPw" value="" placeholder="비밀번호를 입력해주세요!">
+	              	<button type="button" onclick="javascript:login()">login</button>
+              	</c:if>
+              	<c:if test="${userSession != null }">
+              		<a href="${contextPath }/member/logout">logout</a>
+              	</c:if>
               </div>
         </div>
       </nav>

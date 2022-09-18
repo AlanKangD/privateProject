@@ -61,6 +61,7 @@ public class MemberServiceImpl implements MemberService{
 		String checkPw = (String) dto.get("sendPw");
 		int loginStatus = 0;
 		// 0 : error _ 아이디가 없거나 error , 1 : 관리자 로그인성공 , 2 : 유저 로그인 성공 , 3 : 패쓰워드 틀림 
+		checkId = checkId.trim();
 		
 		vo =  mapper.getUserInfo(checkId);
 		

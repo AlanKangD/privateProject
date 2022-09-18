@@ -83,7 +83,14 @@ public class MemberController {
 			}else {
 				System.out.println("login error");
 			}
-		return "1";
+		return loginStatus + "";
+	}
+	
+	@RequestMapping("/member/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		
+		return "/main";
 	}
 	
 }
