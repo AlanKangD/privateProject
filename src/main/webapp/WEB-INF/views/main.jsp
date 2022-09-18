@@ -15,7 +15,7 @@
     <link href="${contextPath }/resources/css/bootstrap.min.css" rel="stylesheet" />
     <link href="${contextPath }/resources/css/style.css" rel="stylesheet" />
     <!-- Document Title -->
-    <title>Luxestate - Multipurpose HTML Template</title>
+    <title>Luxestate  ${userSession }</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <!-- jquery를 사용할 때 소스 -->
     <script>
@@ -114,7 +114,7 @@
             </div>
           </div>
               <div class="loginModal" id="loginModal" style="display : none; background-color: white; ">
-              	<span>${userSession }</span>
+              	
               	<c:if test="${userSession == null }">
 	              	<input type="text" id="loginId" value="" placeholder="아이디를 입력해주세요!">
 	              	<input type="password" id="loginPw" value="" placeholder="비밀번호를 입력해주세요!">

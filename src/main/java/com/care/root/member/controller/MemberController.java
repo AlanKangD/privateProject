@@ -88,9 +88,10 @@ public class MemberController {
 	
 	@RequestMapping("/member/logout")
 	public String logout(HttpSession session) {
+		System.out.println("전체 로그아웃 진행합니다 ! ");
 		session.invalidate();
 		
-		return "/main";
+		return "redirect:/index";
 	}
 	
 }
