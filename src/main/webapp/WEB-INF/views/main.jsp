@@ -15,7 +15,7 @@
     <link href="${contextPath }/resources/css/bootstrap.min.css" rel="stylesheet" />
     <link href="${contextPath }/resources/css/style.css" rel="stylesheet" />
     <!-- Document Title -->
-    <title>Luxestate  ${userSession }</title>
+    <title>Luxestate  </title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <!-- jquery를 사용할 때 소스 -->
     <script>
@@ -68,6 +68,11 @@
 	    	
 	    	
 	    }
+	    
+	    function loginStatus() {
+	    	var login = $("#loginStatus").val();
+	    	console.log(login);
+	    }
     </script>
     
   </head>
@@ -99,16 +104,26 @@
               <div class="join-us">
                 <!-- Join Us Button -->
                 <li class="pointer animate">
+                <c:if test="${userSession == null }">
                 	<a onclick="javascript:registerPopup();">Join Us</a>
-                	<!--  
-                	<a href="${contextPath }/member/registerForm">Join Us</a>
-                	-->
+                </c:if>
+                	
                 </li>
               </div>
               <div class="getting-started">
                 <!-- Get Started Button -->
                 <li class="main-btn pointer text-center animate">
-                	<a onclick='javascript:loginForm()'>Get Started</a>
+                
+                	<a onclick='javascript:loginForm()'>
+                		<c:choose>
+                			<c:when test="${userSession == null }">
+	                			Get Started
+                			</c:when>
+                			<c:otherwise>
+                				Get My Info
+                			</c:otherwise>
+                		</c:choose>
+                	</a>
                 </li>
              </div>
             </div>
@@ -122,6 +137,7 @@
               	</c:if>
               	<c:if test="${userSession != null }">
               		<a href="${contextPath }/member/logout">logout</a>
+              		<button type="button" onclick="javascript:loginStatus()">로그인상태확인</button>
               	</c:if>
               </div>
         </div>
@@ -679,6 +695,7 @@
     <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
     <script src="${contextPath}/resources/js/main.js"></script>
     <!-- Scripts Ends -->
-
+	
+	<input type="hidden" id="loginStatus" name="loginStatus" value="${userSession }">
   </body>
 </html>
