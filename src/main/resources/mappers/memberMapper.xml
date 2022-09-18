@@ -20,4 +20,10 @@
 	<select id="userCheck" resultType="String">
 	     select count(1) count from member where id = '${id}'
 	</select>
+	
+	<select id="getUserInfo" parameterType="String" resultMap="member">
+		select 
+			user_seq, id, nick, pw, freedom, registerDate
+		from member where id = #{id}
+	</select>
 </mapper>

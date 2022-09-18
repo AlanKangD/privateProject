@@ -16,6 +16,8 @@
     <link href="${contextPath }/resources/css/style.css" rel="stylesheet" />
     <!-- Document Title -->
     <title>Luxestate - Multipurpose HTML Template</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- jquery를 사용할 때 소스 -->
     <script>
 	    function registerPopup() {
 	    	var url = "${contextPath }/member/registerForm";
@@ -23,6 +25,37 @@
 	    	var option = "width = 500, height = 500, top = 100, left = 200, location = no";
 	    	
 	    	window.open(url, name, option);
+	    }
+	    function login() {
+	    	var loginId = $("#loginId").val();
+	    	var loginPw = $("#loginPw").val();
+	    	//alert(loginId + "tttt" + loginPw);
+	    	var form  = {
+	    			sendId : loginId,
+	    			sendPw : loginPw
+	    	}
+	    	
+	    	
+	    	$.ajax({
+	    		url : "/member/loginChk",
+	    		type : "POST",
+	    		data : JSON.stringify(form),  // 해당 디팬던시에 어떤 결과가 있는가? 이걸 넣엇을 때 성공으로 넘어갔음..
+	    		dataType : 'json',
+	    		contentType : "application/json; charset=utf-8",
+	    		success : function(result) {
+	    			alert('성공');
+	    		},
+	    		error : function() {
+	    			alert('오류가 발생했습니다. 관리자에게 문의하세요!');
+	    		}
+	    		
+	    	})
+	    }
+	    
+	    
+	    function loginForm() {
+	    	
+	    	
 	    }
     </script>
     
@@ -67,6 +100,12 @@
               </div>
             </div>
           </div>
+              <div class="loginModal" style="background-color: white; ">
+              
+              	<input type="text" id="loginId" value="" placeholder="${userSession }">
+              	<input type="password" id="loginPw" value="" placeholder="비밀번호를 입력해주세요!">
+              	<button type="button" onclick="javascript:login()">login</button>
+              </div>
         </div>
       </nav>
       <div class="hero">
@@ -622,5 +661,6 @@
     <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
     <script src="${contextPath}/resources/js/main.js"></script>
     <!-- Scripts Ends -->
+
   </body>
 </html>

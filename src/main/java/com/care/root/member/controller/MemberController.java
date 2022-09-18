@@ -2,6 +2,8 @@ package com.care.root.member.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,4 +60,30 @@ public class MemberController {
 		
 		return chkOk;
 	}
+	
+	@PostMapping(value = "/member/loginChk", produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public String loginChk(@RequestBody Map<String, Object> dto, HttpSession session) {
+			String id = (String)dto.get("sendId");
+			String pw = (String)dto.get("sendPw");
+			int loginStatus = 0;
+			System.out.println(id + pw );
+			loginStatus = ms.loginChk(dto);
+			
+			System.out.println("로그인 상태 체크 !!! : " + loginStatus);
+			
+			if(loginStatus == 1) {
+				System.out.println("관리자님 환영합니다! ");
+				session.setAttribute("adminSession", id);
+			} else if(loginStatus == 2) {
+				System.out.println("유저님 환영합니다  ");
+				session.setAttribute("userSession", id);
+			} else if(loginStatus == 3){
+				System.out.println("비밀번호 틀림 ");
+			}else {
+				System.out.println("login error");
+			}
+		return "1";
+	}
+	
 }

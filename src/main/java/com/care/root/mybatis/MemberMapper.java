@@ -8,5 +8,7 @@ public interface MemberMapper {
 
 	public String userCheck(MemberVO vo);
 	
+	public MemberVO getUserInfo(String id);
+	
 
 }

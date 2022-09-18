@@ -1,5 +1,9 @@
 package com.care.root.member.service;
 
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +52,52 @@ public class MemberServiceImpl implements MemberService{
 		
 		return check;
 	}
+
+	@SuppressWarnings("unused")
+	@Override
+	public int loginChk(Map<String, Object> dto) {
+		MemberVO vo = new MemberVO();
+		String checkId = (String) dto.get("sendId");
+		String checkPw = (String) dto.get("sendPw");
+		int loginStatus = 0;
+		// 0 : error _ 아이디가 없거나 error , 1 : 관리자 로그인성공 , 2 : 유저 로그인 성공 , 3 : 패쓰워드 틀림 
+		
+		vo =  mapper.getUserInfo(checkId);
+		
+		
+		if(vo != null) {
+			logger.info("####### LOGIN TRING~~ ");
+			if(vo.getId().equals("admin")) {
+				if(vo.getPw().equals(checkPw)) {   
+					logger.info("#### HELLO ADMIN My GOD!");
+					loginStatus = 1;
+				}else {
+					logger.info("#### login tried not password failed!! (admin!!!)");
+					loginStatus = 3;
+				}
+			}else if(vo.getId().equals(checkId)) {
+				if(pwEncode.matches(checkPw, vo.getPw())) {
+					System.out.println("아이디도 존재하고 패쓰워드도 일치합니다!  ");
+					loginStatus = 2;
+				}else {
+					logger.info("#### login tried not password failed!!");
+					loginStatus = 3;
+				}
+			} else {
+				System.out.println("error");
+				logger.info("#### login error hava memberVO but failed!!");
+				loginStatus = 0;
+			}
+		} else {
+			System.out.println("아이디가 존재하지 않습니다!! ");
+			loginStatus = 0;
+		}
+		
+		return loginStatus;
+			
+	}
+		
+	
 
 	
 	
