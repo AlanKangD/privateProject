@@ -20,7 +20,7 @@
 <!-- jquery를 사용할 때 소스 -->
     <script>
 	    function registerPopup() {
-	    	var url = "${contextPath }/member/registerForm";
+	    	var url = "/member/registerForm";
 	    	var name = "registerForm";
 	    	var option = "width = 500, height = 500, top = 100, left = 200, location = no";
 	    	
@@ -43,8 +43,7 @@
 	    		dataType : 'json',
 	    		contentType : "application/json; charset=utf-8",
 	    		success : function(result) {
-	    			alert('성공');
-	    			console.log(result);
+	   			
 	    			if(result == "2") {
 	    				//$("#loginModal").load(window.location.href + "#loginModal");
 	    				console.log("ok");
@@ -106,6 +105,19 @@
                 <li class="pointer animate">
                 <c:if test="${userSession == null }">
                 	<a onclick="javascript:registerPopup();">Join Us</a>
+                </c:if>
+                <c:if test="${userSession != null }">
+                	<pre>
+                		
+                		${userSession } 님 환영합니다! 
+                	</pre>
+                </c:if>
+                <c:if test="${adminSession != null }">
+                	<pre>
+                		<!--  관리자 일 경우에 차별을 주기 위해서 화면이 깨질수 있음  -->
+                		관리자님 환영합니다.!
+                	</pre>
+                	<a href="${contextPath }/member/logout">logout</a>
                 </c:if>
                 	
                 </li>
@@ -650,14 +662,18 @@
         <div class="row footer-top">
           <div class="col-12 col-md-6">
             <!-- logo -->
+            <!-- 간편문의 사항 적을수 있도록 start -->
             <h3>luxestate</h3>
-            <h3>Explore Real Estate</h3>
+            <h3>
+            	<pre style="color: white;">  간편 문의 하기</pre>
+            </h3>
           </div>
           <div class="col-12 col-md-6 Newsletter">
-            <input type="text" placeholder="Subscribe To Our Newsletter" class="left">
+            <input type="text" placeholder="간단한 문의내용을 적어주세요" class="left">
             <button class="newsletter-btn left"></button>
           </div>
         </div>
+        <!-- 간편문의 end -->
         <div class="row footer-bottom">
           <div class="col-sm-12 col-md-4 footer-logo">
             <h4>luxestate</h4>
