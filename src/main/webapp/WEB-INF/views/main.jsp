@@ -72,6 +72,17 @@
 	    	var login = $("#loginStatus").val();
 	    	console.log(login);
 	    }
+	    
+	    function textGoMenu() {
+	    	var searchKey = $('#searchKeyMenu').val();
+	    	
+	    	if(searchKey == "") {
+	    		alert('이동할 메뉴를 검색해주세요!');
+	    	}if(searchKey == "FAQ") {
+	    		location.href='/boardFaq/faqBoardlist';
+	    	}
+	    	
+	    }
     </script>
     
   </head>
@@ -162,8 +173,8 @@
               <h1>Find Your New<br>Modern Apartment </h1>
               <div class="search lux-shadow">
                 <!-- Search -->
-                <input class="left" type="text" placeholder="Search Location">
-                <button class="search-btn left">Search</button>
+                <input class="left" type="text" id="searchKeyMenu" placeholder="Search Location">
+                <button class="search-btn left" onclick="javascript:textGoMenu()">Search</button>
               </div>
             </div>
             <div class="hero-image">
