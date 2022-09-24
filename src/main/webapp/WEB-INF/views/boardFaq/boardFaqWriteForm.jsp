@@ -10,21 +10,37 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <!-- jquery를 사용할 때 소스 -->
 <script>
+
 	$(document).ready(function () {
-		$("#checkSecrit").on('click', function(event) {
-			//alert('test');
-			if($("#secritPw").css("display") == "none") {
-				$('input[name=checkSecrit]').attr('value', "on");
-				$("#secritPw").show();
-			}else {
-				$('input[name=checkSecrit]').attr('value', "off");
-				$("#secritPw").hide();
+		const buttonEl = document.querySelector("#checkSecrit");
+		console.log(buttonEl);
+		buttonEl.onclick = function (event) {
+			var chk = $('#checkSecrit').is(':checked');
+			console.log('ddd' + chk);
+			var chkvalue = $('#checkSecrit').val();
+			console.log(chkvalue);
+				if($("#secritPw").css("display") == "none") {
+					$("#secritPw").show();
+				}else {
+					$("#secritPw").hide();
+				}
 			}
-			console.log($("#clickSecrit").val());
-			event.preventDefault();
+			  // alert(event.target.textContent);
+			
+		//$("#checkSecrit").on('click', function(event) {
+			//alert('test');
+			//if($("#secritPw").css("display") == "none") {
+			//	$('input[name=checkSecrit]').attr('value', "on");
+			//	$("#secritPw").show();
+			//}else {
+			//	$('input[name=checkSecrit]').attr('value', "off");
+			//	$("#secritPw").hide();
+			//}
+			//console.log($("#clickSecrit").val());
+			//event.preventDefault();
 		})
-	})
-	
+	//})
+
 	function sendData() {
 		var selectType = $("#selectType").val();
 		var title = $("#title").val();
@@ -43,8 +59,9 @@
 			$('input[name=sendContent]').attr('value', content);
 			if(scriptCheck == "on") {
 				$('input[name=sendPw]').attr('value', pw);
-			}else if(pw == ""){
-				alert('비밀글의 비밀번호를 입력해주세요!');
+				 if(pw == ""){
+						alert('비밀글의 비밀번호를 입력해주세요!');
+					}
 			}
 			
 			FAQform.submit();
@@ -93,7 +110,7 @@
 	<button type="button" onclick="javascript:sendData()">글쓰기</button>
 <form id="FAQform" action="${contextPath }/boardFaq/boardFaqWrite" method="post">
 	<input type="hidden" name="writer" id="writer" value="${userSession }">
-	<input type="hidden" name="checkSecrit" id="clickSecrit" value="default">
+	<input type="hidden" name="checkSecrit" id="clickSecrit" value="">
 	<input type="hidden" name="sendSelectType" id="sendSelectType" value="">
 	<input type="hidden" name="sendTitle" id="sendTitle" value="">
 	<input type="hidden" name="sendContent" id="sendContent" value="">
