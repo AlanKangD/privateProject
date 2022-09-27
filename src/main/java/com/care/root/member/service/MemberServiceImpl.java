@@ -69,7 +69,7 @@ public class MemberServiceImpl implements MemberService{
 		if(vo != null) {
 			logger.info("####### LOGIN TRING~~ ");
 			if(vo.getId().equals("admin")) {
-				if(vo.getPw().equals(checkPw)) {   
+				if(pwEncode.matches(checkPw, vo.getPw())) {   
 					logger.info("#### HELLO ADMIN My GOD!");
 					loginStatus = 1;
 				}else {

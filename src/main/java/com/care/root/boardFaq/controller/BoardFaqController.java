@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,12 +22,14 @@ public class BoardFaqController {
 	@Autowired BoardFaqService bfs;
 	
 	@RequestMapping("/faqBoardlist")
-	public String faqBoardList() {
+	public String faqBoardList(Model model) {
+		bfs.getAllFaqList(model);
 		return "boardFaq/boradFaqList";
 	}
 	
 	@GetMapping("/boardFaqWriteForm")
-	public String oardFaqWriteForm() {
+	public String boardFaqWriteForm() {
+		
 		return "boardFaq/boardFaqWriteForm";
 	}
 	@PostMapping("/boardFaqWrite")
@@ -50,6 +53,10 @@ public class BoardFaqController {
 		System.out.println("writer :: " + writer);
 		System.out.println("title : " + title);
 		System.out.println("content :: " + content);
+		System.out.println("checkSecrit :: " + checkSecrit);
+		System.out.println("sendSelectType :: " + sendSelectType);
+		System.out.println("sendPw :: " + sendPw);
+		System.out.println("testtt :: " + vo.getSendPw());
 		
 		
 		

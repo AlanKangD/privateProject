@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.root.boardFaq.boardFaqDAO.BoardFaqDAO">
+
+	<resultMap type="com.care.root.VO.BoardFaqVO" id="FaqBoard">
+		<id column="FAQ_no" property="board_no"/>
+		<result column="FAQ_writer" property="writer"/>
+		<result column="FAQ_title" property="sendTitle"/>
+		<result column="FAQ_content" property="Content"/>
+		<result column="FAQ_select_type" property="sendSelectType"/>
+		<result column="FAQ_check_secu" property="checkSecrit"/>
+		<result column="FAQ_pw" property="sendPw"/>
+		<result column="FAQ_reply_ok" property="FAQ_reply_ok"/>
+		<result column="FAQ_sysdate" property="FAQsysdate"/>
+	</resultMap>
+	
+	<insert id="writeSave" parameterType="com.care.root.VO.BoardFaqVO">
+		insert into FAQboard(FAQ_writer, FAQ_select_type, FAQ_title, FAQ_content, FAQ_pw, FAQ_sysdate) values(#{writer}, #{sendSelectType}, #{sendTitle}, #{Content}, #{sendPw}, now()) 
+	</insert>
+
+</mapper>

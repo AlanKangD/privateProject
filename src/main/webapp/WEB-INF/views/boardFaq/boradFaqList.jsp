@@ -19,7 +19,18 @@ function registerPopup() {
 
 </head>
 <body>
-		<h1>boardList 입니다  </h1>
+		<h1>FAQboardList 입니다  </h1>
+		
+		<table border="1">
+			<tr>
+				<td>글번호</td>
+				<td>제목</td>
+				<td>내용</td>
+				<td>날짜</td>
+				<td>작성자</td>
+			</tr>
+		
+		</table>
 
 	<a onclick="javascript:registerPopup()">글쓰기</a>
 </body>

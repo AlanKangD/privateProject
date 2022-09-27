@@ -1,12 +1,36 @@
 package com.care.root.VO;
 
+import java.sql.Date;
+
 public class BoardFaqVO {
+	private int board_no;
 	private String writer;
 	private String checkSecrit;
 	private String sendSelectType;
 	private String sendTitle;
 	private String Content;
 	private String sendPw;
+	private String FAQ_reply_ok;
+	private Date FAQsysdate;
+	
+	public Date getFAQsysdate() {
+		return FAQsysdate;
+	}
+	public void setFAQsysdate(Date fAQsysdate) {
+		FAQsysdate = fAQsysdate;
+	}
+	public int getBoard_no() {
+		return board_no;
+	}
+	public void setBoard_no(int board_no) {
+		this.board_no = board_no;
+	}
+	public String getFAQ_reply_ok() {
+		return FAQ_reply_ok;
+	}
+	public void setFAQ_reply_ok(String fAQ_reply_ok) {
+		FAQ_reply_ok = fAQ_reply_ok;
+	}
 	public String getWriter() {
 		return writer;
 	}

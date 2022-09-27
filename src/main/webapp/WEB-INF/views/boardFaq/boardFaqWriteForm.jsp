@@ -11,35 +11,26 @@
 <!-- jquery를 사용할 때 소스 -->
 <script>
 
-	$(document).ready(function () {
+	$(document).ready(function () {  //비밀글 체크 하고 패쓰워드 show hide ok
 		const buttonEl = document.querySelector("#checkSecrit");
 		console.log(buttonEl);
 		buttonEl.onclick = function (event) {
 			var chk = $('#checkSecrit').is(':checked');
 			console.log('ddd' + chk);
 			var chkvalue = $('#checkSecrit').val();
-			console.log(chkvalue);
+			
 				if($("#secritPw").css("display") == "none") {
+					$('input[name=checkSecrit]').attr('value', "on");
 					$("#secritPw").show();
 				}else {
+					$('input[name=checkSecrit]').attr('value', "off");
+					$('input[name=sendPw]').attr('value', "");
 					$("#secritPw").hide();
 				}
+				console.log(chkvalue);
 			}
-			  // alert(event.target.textContent);
-			
-		//$("#checkSecrit").on('click', function(event) {
-			//alert('test');
-			//if($("#secritPw").css("display") == "none") {
-			//	$('input[name=checkSecrit]').attr('value', "on");
-			//	$("#secritPw").show();
-			//}else {
-			//	$('input[name=checkSecrit]').attr('value', "off");
-			//	$("#secritPw").hide();
-			//}
-			//console.log($("#clickSecrit").val());
-			//event.preventDefault();
+			  
 		})
-	//})
 
 	function sendData() {
 		var selectType = $("#selectType").val();
@@ -47,6 +38,13 @@
 		var content = $("#content").val();
 		var scriptCheck = $("#clickSecrit").val();
 		var pw = $("#pw").val();
+		
+		console.log('selectType : ' + selectType);
+		console.log('title : '+ title);
+		console.log('content : ' + content);
+		console.log('scriptCheck : ' + scriptCheck);
+		console.log('pw : ' + pw);
+		
 		
 		
 		if(title == "") {
