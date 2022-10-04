@@ -24,6 +24,8 @@ function registerPopup() {
 		<table border="1">
 			<tr>
 				<td>글번호</td>
+				<td>글 카운트</td>
+				<td>글종</td>
 				<td>제목</td>
 				<td>내용</td>
 				<td>날짜</td>
@@ -34,9 +36,11 @@ function registerPopup() {
 					<td colspan="5">데이터가 없습니다!!</td>  
 				</tr>
 			</c:if>
-			<c:forEach items="${boardFaqList }" var="FAQboardList">
+			<c:forEach items="${boardFaqList }" var="FAQboardList" varStatus="status">
 				<tr>
 					<td>${FAQboardList.FAQBoardNo }</td>
+					<td>${status.count }</td>
+					<td>${FAQboardList.FAQBoardType }</td>
 					<td>${FAQboardList.FAQTitle }</td>
 					<td>${FAQboardList.FAQContent }</td>
 					<td>${FAQboardList.FAQSysdate }</td>
