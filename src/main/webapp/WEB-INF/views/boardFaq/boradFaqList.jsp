@@ -29,6 +29,21 @@ function registerPopup() {
 				<td>날짜</td>
 				<td>작성자</td>
 			</tr>
+			<c:if test="${boardFaqList.size() == 0 }">
+				<tr>
+					<td colspan="5">데이터가 없습니다!!</td>  
+				</tr>
+			</c:if>
+			<c:forEach items="${boardFaqList }" var="FAQboardList">
+				<tr>
+					<td>${FAQboardList.FAQBoardNo }</td>
+					<td>${FAQboardList.FAQTitle }</td>
+					<td>${FAQboardList.FAQContent }</td>
+					<td>${FAQboardList.FAQSysdate }</td>
+					<td>${FAQboardList.FAQWriter }</td>
+				</tr>
+			</c:forEach>
+			
 		
 		</table>
 

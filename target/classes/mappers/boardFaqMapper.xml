@@ -4,19 +4,23 @@
 <mapper namespace="com.care.root.boardFaq.boardFaqDAO.BoardFaqDAO">
 
 	<resultMap type="com.care.root.VO.BoardFaqVO" id="FaqBoard">
-		<id column="FAQ_no" property="board_no"/>
-		<result column="FAQ_writer" property="writer"/>
-		<result column="FAQ_title" property="sendTitle"/>
-		<result column="FAQ_content" property="Content"/>
-		<result column="FAQ_select_type" property="sendSelectType"/>
-		<result column="FAQ_check_secu" property="checkSecrit"/>
-		<result column="FAQ_pw" property="sendPw"/>
-		<result column="FAQ_reply_ok" property="FAQ_reply_ok"/>
-		<result column="FAQ_sysdate" property="FAQsysdate"/>
+		<id column="FAQ_no" property="FAQBoardNo"/>
+		<result column="FAQ_writer" property="FAQWriter"/>
+		<result column="FAQ_title" property="FAQTitle"/>
+		<result column="FAQ_content" property="FAQContent"/>
+		<result column="FAQ_select_type" property="FAQBoardType"/>
+		<result column="FAQ_check_secu" property="FAQSecuChk"/>
+		<result column="FAQ_pw" property="FAQSecuPw"/>
+		<result column="FAQ_reply_ok" property="FAQReplyOk"/>
+		<result column="FAQ_sysdate" property="FAQSysdate"/>
 	</resultMap>
 	
 	<insert id="writeSave" parameterType="com.care.root.VO.BoardFaqVO">
-		insert into FAQboard(FAQ_writer, FAQ_select_type, FAQ_title, FAQ_content, FAQ_pw, FAQ_sysdate) values(#{writer}, #{sendSelectType}, #{sendTitle}, #{Content}, #{sendPw}, now()) 
+		insert into FAQboard(FAQ_writer, FAQ_select_type, FAQ_title, FAQ_content,FAQ_check_secu ,FAQ_pw ,FAQ_sysdate) values(#{FAQWriter}, #{FAQBoardType}, #{FAQTitle}, #{FAQContent},  #{FAQSecuChk},#{FAQSecuPw},now()) 
 	</insert>
+	
+	<select id="getAllFaqList" resultMap="FaqBoard">
+		select * from FAQboard;
+	</select>
 
 </mapper>

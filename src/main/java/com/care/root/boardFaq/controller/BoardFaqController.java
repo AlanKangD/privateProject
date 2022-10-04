@@ -41,22 +41,14 @@ public class BoardFaqController {
 		String sendSelectType = request.getParameter("sendSelectType");
 		String sendPw = request.getParameter("sendPw");
 		BoardFaqVO vo = new BoardFaqVO();
-		
-		vo.setCheckSecrit(checkSecrit);
-		vo.setContent(content);
-		vo.setSendPw(sendPw);
-		vo.setSendSelectType(sendSelectType);
-		vo.setSendTitle(title);
-		vo.setWriter(writer);
+		vo.setFAQWriter(writer);
+		vo.setFAQTitle(title);
+		vo.setFAQContent(content);
+		vo.setFAQSecuChk(checkSecrit);
+		vo.setFAQSecuPw(sendPw);
+		vo.setFAQBoardType(sendSelectType);
+	
 		bfs.writeSave(vo);
-		
-		System.out.println("writer :: " + writer);
-		System.out.println("title : " + title);
-		System.out.println("content :: " + content);
-		System.out.println("checkSecrit :: " + checkSecrit);
-		System.out.println("sendSelectType :: " + sendSelectType);
-		System.out.println("sendPw :: " + sendPw);
-		System.out.println("testtt :: " + vo.getSendPw());
 		
 		
 		
