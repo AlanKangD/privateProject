@@ -19,60 +19,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <!-- jquery를 사용할 때 소스 -->
     <script>
-	    function registerPopup() {
-	    	var url = "/member/registerForm";
-	    	var name = "registerForm";
-	    	var option = "width = 500, height = 500, top = 100, left = 200, location = no";
-	    	
-	    	window.open(url, name, option);
-	    }
-	    function login() {
-	    	var loginId = $("#loginId").val();
-	    	var loginPw = $("#loginPw").val();
-	    	//alert(loginId + "tttt" + loginPw);
-	    	var form  = {
-	    			sendId : loginId,
-	    			sendPw : loginPw
-	    	}
-	    	
-	    	
-	    	$.ajax({
-	    		url : "/member/loginChk",
-	    		type : "POST",
-	    		data : JSON.stringify(form),  // 해당 디팬던시에 어떤 결과가 있는가? 이걸 넣엇을 때 성공으로 넘어갔음..
-	    		dataType : 'json',
-	    		contentType : "application/json; charset=utf-8",
-	    		success : function(result) {
-	   			
-	    			if(result == "2") {
-	    				//$("#loginModal").load(window.location.href + "#loginModal");
-	    				console.log("ok");
-	    				location.reload();
-	    			}
-	    		},
-	    		error : function() {
-	    			alert('오류가 발생했습니다. 관리자에게 문의하세요!');
-	    		}
-	    		
-	    	})
-	    }
-	    
-	    
-	    function loginForm() {
-	    	if($("#loginModal").css("display") == "none") {
-	    		$("#loginModal").show();
-	    	}else {
-	    		$("#loginModal").hide();
-	    	}
-	    	
-	    	
-	    }
-	    
-	    function loginStatus() {
-	    	var login = $("#loginStatus").val();
-	    	console.log(login);
-	    }
-	    
+	      
 	    function textGoMenu() {
 	    	var searchKey = $('#searchKeyMenu').val();
 	    	
@@ -88,6 +35,7 @@
   </head>
   <body>
     <jsp:include page="./common/header.jsp"/>
+    
     <!------------------------------------------------ STATISTIC SECTION -->
     <section class="statistic" id="about">
       <div class="container">
@@ -562,55 +510,8 @@
         </div>
       </div>
     </section>
-    <!------------------------------------------------ FOOTER SECTION -->
-    <footer id="contact">
-      <div class="container">
-        <div class="row footer-top">
-          <div class="col-12 col-md-6">
-            <!-- logo -->
-            <!-- 간편문의 사항 적을수 있도록 start -->
-            <h3>luxestate</h3>
-            <h3>
-            	<pre style="color: white;">  간편 문의 하기</pre>
-            </h3>
-          </div>
-          <div class="col-12 col-md-6 Newsletter">
-            <input type="text" placeholder="간단한 문의내용을 적어주세요" class="left">
-            <button class="newsletter-btn left"></button>
-          </div>
-        </div>
-        <!-- 간편문의 end -->
-        <div class="row footer-bottom">
-          <div class="col-sm-12 col-md-4 footer-logo">
-            <h4>luxestate</h4>
-            <p>© 2019 - luxestate,<br>All Right Reserved</p>
-          </div>
-          <div class="col-sm-3 col-md-2 footer-column">
-            <h5>LUXESTATE</h5>
-            <a href="#">Agents</a>
-            <a href="#">Hunters</a>
-          </div>
-          <div class="col-sm-3 col-md-2 footer-column">
-            <h5>COMPANY</h5>
-            <a href="#">About</a>
-            <a href="#">FAQ</a>
-            <a href="#">Contact</a>
-            <a href="#">Social</a>
-          </div>          
-          <div class="col-sm-3 col-md-2 footer-column">
-            <h5>PRODUCT</h5>
-            <a href="#">Appartments</a>
-            <a href="#">How It Works</a>
-          </div>
-          <div class="col-sm-3 col-md-2 footer-column">
-            <h5>SERVICES</h5>
-            <a href="#">Renting</a>
-            <a href="#">Selling</a>
-            <a href="#">Building</a>
-          </div>
-        </div>
-      </div>
-    </footer>
+  
+  <jsp:include page="./common/footer.jsp"/>
     <!-- Scripts -->
     <script src="${contextPath}/resources/js/jquery.min.js"></script>
     <script src="${contextPath}/resources/js/popper.js"></script>
@@ -618,6 +519,6 @@
     <script src="${contextPath}/resources/js/main.js"></script>
     <!-- Scripts Ends -->
 	
-	<input type="hidden" id="loginStatus" name="loginStatus" value="${userSession }">
+	
   </body>
 </html>

@@ -7,8 +7,65 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+   <script>
+	   function registerPopup() {
+	   	var url = "/member/registerForm";
+	   	var name = "registerForm";
+	   	var option = "width = 500, height = 500, top = 100, left = 200, location = no";
+	   	
+	   	window.open(url, name, option);
+	   }
+   		
+	   function login() {
+	    	var loginId = $("#loginId").val();
+	    	var loginPw = $("#loginPw").val();
+	    	//alert(loginId + "tttt" + loginPw);
+	    	var form  = {
+	    			sendId : loginId,
+	    			sendPw : loginPw
+	    	}
+	    	
+	    	
+	    	$.ajax({
+	    		url : "/member/loginChk",
+	    		type : "POST",
+	    		data : JSON.stringify(form),  // 해당 디팬던시에 어떤 결과가 있는가? 이걸 넣엇을 때 성공으로 넘어갔음..
+	    		dataType : 'json',
+	    		contentType : "application/json; charset=utf-8",
+	    		success : function(result) {
+	   			
+	    			if(result == "2") {
+	    				//$("#loginModal").load(window.location.href + "#loginModal");
+	    				console.log("ok");
+	    				location.reload();
+	    			}
+	    		},
+	    		error : function() {
+	    			alert('오류가 발생했습니다. 관리자에게 문의하세요!');
+	    		}
+	    		
+	    	})
+	    }
+	   
+	    function loginForm() {
+	    	if($("#loginModal").css("display") == "none") {
+	    		$("#loginModal").show();
+	    	}else {
+	    		$("#loginModal").hide();
+	    	}
+	    	
+	    	
+	    }
+	    function loginStatus() {
+	    	var login = $("#loginStatus").val();
+	    	console.log(login);
+	    }
+	    
+   </script>
 </head>
 <body>
+
 
 
  <!------------------------------------------------ HEADER SECTION -->
@@ -117,5 +174,6 @@
         </div>
       </div>
     </header>
+    <input type="hidden" id="loginStatus" name="loginStatus" value="${userSession }">
 </body>
 </html>
