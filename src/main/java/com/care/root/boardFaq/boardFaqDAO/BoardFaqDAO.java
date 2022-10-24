@@ -10,4 +10,5 @@ public interface BoardFaqDAO {
 	
 	public List<BoardFaqVO> getAllFaqList();
 
+	public BoardFaqVO getDetailFAQ(String FAQBoardNo);
 }

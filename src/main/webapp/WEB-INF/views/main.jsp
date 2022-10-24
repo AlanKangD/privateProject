@@ -17,21 +17,7 @@
     <!-- Document Title -->
     <title>Luxestate  </title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<!-- jquery를 사용할 때 소스 -->
-    <script>
-	      
-	    function textGoMenu() {
-	    	var searchKey = $('#searchKeyMenu').val();
-	    	
-	    	if(searchKey == "") {
-	    		alert('이동할 메뉴를 검색해주세요!');
-	    	}if(searchKey == "FAQ") {
-	    		location.href='/boardFaq/faqBoardlist';
-	    	}
-	    	
-	    }
-    </script>
-    
+	
   </head>
   <body>
     <jsp:include page="./common/header.jsp"/>
@@ -512,6 +498,7 @@
     </section>
   
   <jsp:include page="./common/footer.jsp"/>
+  
     <!-- Scripts -->
     <script src="${contextPath}/resources/js/jquery.min.js"></script>
     <script src="${contextPath}/resources/js/popper.js"></script>

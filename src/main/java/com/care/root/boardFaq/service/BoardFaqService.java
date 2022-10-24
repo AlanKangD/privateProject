@@ -9,5 +9,7 @@ public interface BoardFaqService {
 	public void writeSave(BoardFaqVO vo);
 	
 	public void getAllFaqList(Model model); 
+	
+	public void getDetailFAQ(Model model , String FAQBoardNo);
 
 }

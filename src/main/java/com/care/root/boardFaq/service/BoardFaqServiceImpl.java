@@ -50,6 +50,15 @@ public class BoardFaqServiceImpl implements BoardFaqService{
 		
 	}
 
+	@Override
+	public void getDetailFAQ(Model model , String FAQBoardNo) {
+		BoardFaqVO vo =  mapper.getDetailFAQ(FAQBoardNo);
+		System.out.println("board servuce" +vo.getFAQBoardNo() );
+		model.addAttribute("FAQDetail", vo);
+		
+			
+	}
+
 
 	
 

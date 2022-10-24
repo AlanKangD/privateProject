@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" type="image/png" href="${contextPath }/resources/images/favicon.png" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
@@ -41,7 +42,11 @@ function registerPopup() {
 					<td>${FAQboardList.FAQBoardNo }</td>
 					<td>${status.count }</td>
 					<td>${FAQboardList.FAQBoardType }</td>
-					<td>${FAQboardList.FAQTitle }</td>
+					<td>
+						<a href="${contextPath }/boardFaq/boardFAQshowdetail?FAQBoardNo=${FAQboardList.FAQBoardNo }">
+							${FAQboardList.FAQTitle }
+						</a>
+					</td>
 					<td>${FAQboardList.FAQContent }</td>
 					<td>${FAQboardList.FAQSysdate }</td>
 					<td>${FAQboardList.FAQWriter }</td>

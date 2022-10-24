@@ -22,5 +22,9 @@
 	<select id="getAllFaqList" resultMap="FaqBoard">
 		select * from FAQboard;
 	</select>
+	
+	<select id="getDetailFAQ" resultMap="FaqBoard">
+		select * from FAQboard where FAQ_no = #{FAQBoardNo}
+	</select>
 
 </mapper>

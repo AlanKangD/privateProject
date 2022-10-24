@@ -62,6 +62,23 @@
 	    	console.log(login);
 	    }
 	    
+	    function textGoMenu() {
+	    	var searchKey = $('#searchKeyMenu').val();
+	    	
+	    	if(searchKey == "") {
+	    		alert('이동할 메뉴를 검색해주세요!');
+	    	}if(searchKey == "FAQ") {
+	    		location.href='/boardFaq/faqBoardlist';
+	    	}
+	    	
+	    }
+	    
+	    $("#searchKeyMenu").keydown(function (e) {
+	    	  if (e.keyCode == 13) {
+	    	    $('input[name = searchKeyMenu]').click();
+	    	  }
+	    	});
+	    
    </script>
 </head>
 <body>
@@ -154,7 +171,7 @@
               <h1>Find Your New<br>Modern Apartment </h1>
               <div class="search lux-shadow">
                 <!-- Search -->
-                <input class="left" type="text" id="searchKeyMenu" placeholder="Search Location">
+                <input class="left" type="text" id="searchKeyMenu" name="searchKeyMenu" placeholder="Search Location"  onkeyup="if(window.event.keyCode==13){javascript:textGoMenu()}" >
                 <button class="search-btn left" onclick="javascript:textGoMenu()">Search</button>
               </div>
             </div>
