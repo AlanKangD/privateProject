@@ -6,9 +6,9 @@ public interface MemberMapper {
 	
 	public void register(MemberVO vo);
 
-	public String userCheck(MemberVO vo);
+	public String memberCheck(MemberVO vo);
 	
-	public MemberVO getUserInfo(String id);
+	public MemberVO getMemberInfo(String id);
 	
 
 }

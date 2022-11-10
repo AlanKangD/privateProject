@@ -42,10 +42,10 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public String userCheck(MemberVO vo) {
+	public String memberCheck(MemberVO vo) {
 		
 		
-		String check = mapper.userCheck(vo);
+		String check = mapper.memberCheck(vo);
 		
 		System.out.println("###### mapper check :: " + check);
 		
@@ -63,7 +63,7 @@ public class MemberServiceImpl implements MemberService{
 		// 0 : error _ 아이디가 없거나 error , 1 : 관리자 로그인성공 , 2 : 유저 로그인 성공 , 3 : 패쓰워드 틀림 
 		checkId = checkId.trim();
 		
-		vo =  mapper.getUserInfo(checkId);
+		vo =  mapper.getMemberInfo(checkId);
 		
 		
 		if(vo != null) {

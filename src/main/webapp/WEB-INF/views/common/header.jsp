@@ -69,6 +69,8 @@
 	    		alert('이동할 메뉴를 검색해주세요!');
 	    	}if(searchKey == "FAQ") {
 	    		location.href='/boardFaq/faqBoardlist';
+	    	}if(searchKey == "board") {
+	    		location.href='/boardList/boardList';
 	    	}
 	    	
 	    }

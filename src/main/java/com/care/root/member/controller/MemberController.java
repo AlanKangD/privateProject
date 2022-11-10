@@ -56,7 +56,7 @@ public class MemberController {
 	public String memberChk(@RequestParam("id") String id) {
 		MemberVO vo = new MemberVO();
 		vo.setId(id);
-		String chkOk = ms.userCheck(vo);
+		String chkOk = ms.memberCheck(vo);
 		
 		return chkOk;
 	}

@@ -436,7 +436,7 @@ header nav {
 .appartment-info {
   height: 24%;
   background-color: #fff;
-  padding: 25px 20px;
+  padding: 20px 20px;
 }
 .appartment-title {
   width: 100%;
@@ -446,7 +446,7 @@ header nav {
   font-size: 15px;
   font-weight: 700;
   letter-spacing: 0px;
-  line-height: 20px;
+  line-height: 5px;
 }
 .appartment-details {
   width: 100%;
