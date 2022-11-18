@@ -70,7 +70,7 @@
 	    	}if(searchKey == "FAQ") {
 	    		location.href='/boardFaq/faqBoardlist';
 	    	}if(searchKey == "board") {
-	    		location.href='/boardList/boardList';
+	    		location.href='/boardList/AllBoardList';
 	    	}
 	    	
 	    }

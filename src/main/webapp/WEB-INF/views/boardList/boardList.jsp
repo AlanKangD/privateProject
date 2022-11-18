@@ -52,29 +52,62 @@
 	            <div class="notice">
 					<a href="#" style="color: #FFFFFF; font-size: 14px;">&#x1F4E2&emsp;<b>이용하기 전, 반드시 읽어주세요 !</b></a>
 				</div>
+				<div class="getting-started" style="float: right;">
+                <!-- Get Started Button -->
+	                <li class="main-btn pointer text-center animate" style="width: 100px;">
+	                	<a href='${contextPath}/boardList/boardWrite'>
+	                		작성
+	                	</a>
+	                </li>
+             	</div>
 	          </div>
 	        </div>
 	        <div class="row">
 	        <!-- Appartment  -->
-			  <div class="col-12 col-md-6 col-lg-4">
+	       	<c:forEach items="${boardList}" var="boardList" varStatus="status">
+			<div class="col-12 col-md-6 col-lg-4">
 	            <div class="appartment-box">
 	              <div class="appartment-image">
 	                <!-- Appartment Image  -->
+	                <img src="images/appartment.png" alt="">
 	              </div>
 	              <div class="appartment-info">
 	                <div class="appartment-title">
 	                  <!-- Appartment Address  -->
-	                  <p>퇴근이 기다려지는 하루다.</p>
+	                  <p>${boardList.boardTitle}</p>
 	                </div>
 	                <div class="appartment-details">
 	                  <div class="price left">
 	                    <!-- Appartment Price  -->
-	                    <p>HAPPY !</p>
+	                    <p>
+	                    <c:choose>
+		                    <c:when test="${boardList.boardFeel == '매우좋음'}">
+		                    	엄청 좋아! &#128525;
+		                    </c:when>
+		                    <c:when test="${boardList.boardFeel == '좋음'}">
+		                    	좋아! &#128515;
+		                    </c:when>
+		                    <c:when test="${boardList.boardFeel == '보통'}">
+		                    	그냥 그래 &#128528;
+		                    </c:when>
+		                    <c:when test="${boardList.boardFeel == '나쁨'}">
+		                    	별로야 &#128549;
+		                    </c:when>
+		                    <c:when test="${boardList.boardFeel == '최악'}">
+		                    	최악! &#128545;
+		                    </c:when>
+	                    </c:choose>
+	                    </p>
+	                  </div>
+	                  <div class="bathrooms right flex-center" style="width: 30%;">
+	                    <!-- Appartment Number of Bathrooms  -->
+	                    <p class="left">${boardList.boardSysdate}</p>
 	                  </div>
 	                </div>
 	              </div>
 	            </div>
-	          </div>
+	         </div>
+	       	</c:forEach>
 	        </div>
 	        <div class="row">
 	          <div class="col-12">

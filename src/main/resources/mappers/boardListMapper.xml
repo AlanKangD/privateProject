@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.root.boardList.boardListDAO.BoardListDAO">
+
+	<resultMap type="com.care.root.VO.BoardListVO" id="boardList">
+		<id column="board_no" property="boardNo"/>
+		<result column="board_writer" property="boardWriter"/>
+		<result column="board_title" property="boardTitle"/>
+		<result column="board_content" property="boardContent"/>
+		<result column="board_feel" property="boardFeel"/>
+		<result column="board_sysdate" property="boardSysdate"/>
+	</resultMap>
+	
+	<select id="getAllBoardList" resultMap="boardList">
+		SELECT * FROM board
+	</select>
+
+</mapper>

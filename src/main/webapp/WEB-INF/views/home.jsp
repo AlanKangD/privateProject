@@ -14,6 +14,7 @@
 
 <a href="${contextPath}/index">MAIN HOME</a>
 <a href="${contextPath}/boardFaq/faqBoardlist">BoardFaq</a>
+<a href="${contextPath}/boardList/AllBoardList">BoardList</a>
 
 </body>
 </html>

@@ -20,7 +20,7 @@
 	</insert>
 	
 	<select id="getAllFaqList" resultMap="FaqBoard">
-		select * from FAQboard;
+		select * from FAQboard
 	</select>
 	
 	<select id="getDetailFAQ" resultMap="FaqBoard">

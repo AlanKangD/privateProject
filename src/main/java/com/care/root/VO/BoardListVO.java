@@ -8,6 +8,7 @@ public class BoardListVO {
 	private String boardWriter;
 	private String boardTitle;
 	private String boardContent;
+	private String boardFeel;
 	private Date boardSysdate;
 	
 	public int getBoardNo() {
@@ -33,6 +34,12 @@ public class BoardListVO {
 	}
 	public void setBoardContent(String boardContent) {
 		this.boardContent = boardContent;
+	}
+	public String getBoardFeel() {
+		return boardFeel;
+	}
+	public void setBoardFeel(String boardFeel) {
+		this.boardFeel = boardFeel;
 	}
 	public Date getBoardSysdate() {
 		return boardSysdate;

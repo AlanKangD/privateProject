@@ -6,4 +6,6 @@ import com.care.root.VO.BoardListVO;
 
 public interface BoardListDAO {
 	
+	public List<BoardListVO> getAllBoardList();
+
 }
