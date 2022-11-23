@@ -58,17 +58,16 @@
 				<h4>기분</h4>
 				<input type="text" name="feel" list="feelList" placeholder="기분을 선택해 주세요.">
 					<datalist id="feelList">
-						<option value="엄청 좋아!">
-						<option value="좋아!">
-						<option value="그냥 그래">
-						<option value="별로야">
-						<option value="최악!">
+						<option value="매우좋음">
+						<option value="좋음">
+						<option value="보통">
+						<option value="나쁨">
+						<option value="최악">
 					</datalist>
 				<br><br>
 				<h4>내용</h4>
 				<textarea style="resize:none;" rows="10" cols="40" name="content" placeholder="내용을 입력해 주세요."></textarea>
 				<br><br>
-				<!--  
 				<h4>파일</h4>
 				            <div id="image_container">
 				           		<script>
@@ -86,15 +85,7 @@
 				<br><br>
 				<input type="file" name="boardImgPath" accept="image/*" onchange="setThumbnail(event);"/>
 				<br><br>
-				-->
-				<div class="getting-started" style="float: left;">
-                <!-- Get Started Button -->
-	                <li class="main-btn pointer text-center animate">
-	                	<a href='${contextPath}/boardList/boardWrite'>
-	                		저장
-	                	</a>
-	                </li>
-             	</div>
+				<input type="submit" value="등록">
 				</form>
 	          </div>
 	        </div>

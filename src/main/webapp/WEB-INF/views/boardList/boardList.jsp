@@ -64,17 +64,24 @@
 	        </div>
 	        <div class="row">
 	        <!-- Appartment  -->
+	        <c:if test="${boardList.size() == 0}">
+	       		<h1>데이터 없음.</h1>
+	       	</c:if>
 	       	<c:forEach items="${boardList}" var="boardList" varStatus="status">
 			<div class="col-12 col-md-6 col-lg-4">
 	            <div class="appartment-box">
 	              <div class="appartment-image">
 	                <!-- Appartment Image  -->
-	                <img src="images/appartment.png" alt="">
+	                <c:if test="${fileData[status.index].fileStored != 'NONE'}">
+						<img src="${contextPath}/boardList/download.?file=${fileData[status.index].fileStored}">
+					</c:if>
 	              </div>
 	              <div class="appartment-info">
 	                <div class="appartment-title">
 	                  <!-- Appartment Address  -->
-	                  <p>${boardList.boardTitle}</p>
+	                  <p>
+	                  <a href="${contextPath}/boardList/boardDetail?boardNo=${boardList.boardNo}">${boardList.boardTitle}</a>
+	                  </p>
 	                </div>
 	                <div class="appartment-details">
 	                  <div class="price left">

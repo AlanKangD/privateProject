@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class BoardListVO {
 	
+	// BoardVO
 	private int boardNo;
 	private String boardWriter;
 	private String boardTitle;

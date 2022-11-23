@@ -12,8 +12,40 @@
 		<result column="board_sysdate" property="boardSysdate"/>
 	</resultMap>
 	
+	<resultMap type="com.care.root.VO.FileVO" id="FileData">
+		<id column="file_no" property="fileNo"/>
+		<result column="board_no" property="boardNo"/>
+		<result column="file_origin" property="fileOrigin"/>
+		<result column="file_stored" property="fileStored"/>
+		<result column="file_size" property="fileSize"/>
+		<result column="file_delete_yn" property="fileDeleteYn"/>
+	</resultMap>
+	
 	<select id="getAllBoardList" resultMap="boardList">
 		SELECT * FROM board
 	</select>
+	
+	<insert id="boardWriteSave">
+		INSERT INTO board (board_no, board_writer, board_title, board_content, board_feel, board_sysdate)
+		VALUES(NULL, #{boardWriter}, #{boardTitle}, #{boardContent}, #{boardFeel}, now())
+	</insert>
+	
+	<insert id="boardFileSave">
+		INSERT INTO file_info (file_no, file_origin, file_stored, file_size, file_delete_yn, board_no)
+		VALUES(NULL, #{fileOrigin}, #{fileStored}, #{fileSize}, #{fileDeleteYn}, (SELECT board_no FROM board WHERE board_writer = #{boardWriter} AND board_title = #{boardTitle} AND board_content = #{boardContent}))
+	</insert>
+	
+	<select id="boardDetail" resultMap="boardList">
+		SELECT * FROM board WHERE board_no = #{boardNo}
+	</select>
+	
+	<select id="boardFileSearch" resultMap="FileData">
+		SELECT * FROM file_info WHERE board_no = #{boardNo}
+	</select>
+	
+	<select id="boardFileList" resultMap="FileData">
+		SELECT * FROM file_info
+	</select>
+
 
 </mapper>
