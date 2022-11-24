@@ -11,6 +11,7 @@ public class BoardListVO {
 	private String boardContent;
 	private String boardFeel;
 	private Date boardSysdate;
+	private String boardDeleteYn;
 	
 	public int getBoardNo() {
 		return boardNo;
@@ -48,6 +49,13 @@ public class BoardListVO {
 	public void setBoardSysdate(Date boardSysdate) {
 		this.boardSysdate = boardSysdate;
 	}
+	public String getBoardDeleteYn() {
+		return boardDeleteYn;
+	}
+	public void setBoardDeleteYn(String boardDeleteYn) {
+		this.boardDeleteYn = boardDeleteYn;
+	}
+	
 	
 	
 	

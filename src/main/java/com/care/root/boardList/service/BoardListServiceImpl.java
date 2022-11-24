@@ -23,12 +23,6 @@ public class BoardListServiceImpl implements BoardListService {
 	@Override
 	public void getAllBoardList(Model model) {
 		System.out.println("getAllBoardList 서비스Impl 호출");
-		/*
-		for(int i = 0; i < vo.size(); i++) {
-			System.out.println("보드리스트 각 보드 넘버 : " + vo.get(i).getBoardNo());
-			model.addAttribute("fileData", mapper.boardFileList(vo.get(i).getBoardNo()));
-		}
-		*/
 		List<FileVO> fvo = mapper.boardFileList();
 		
 		for(int i = 0; i < fvo.size(); i++ ) {
@@ -47,12 +41,6 @@ public class BoardListServiceImpl implements BoardListService {
 		model.addAttribute("fileData", mapper.boardFileSearch(boardNo));
 	}
 
-	// 단일 파일 아니고 다중으로 넣을거니까 파일 테이블에 인덱스 컬럼 추가 해야할 듯 ?
-	// for문 돌려서 i번째 컬럼에 넣고
-	// 게시판에는 무조건 0번째부터 나오게 (썸네일)
-	// 메인페이지 각 글마다 넘버를 안보이게 해서 숨겨놓을까봐
-	// 그거 메인 파일 불러올 때 board_no 으로 하면 찾기 편하자너
-	
 	@Override
 	public void boardWriteSave(MultipartHttpServletRequest mul) {
 		BoardListVO vo = new BoardListVO();
@@ -62,6 +50,7 @@ public class BoardListServiceImpl implements BoardListService {
 		vo.setBoardTitle(mul.getParameter("title"));
 		vo.setBoardContent(mul.getParameter("content"));
 		vo.setBoardFeel(mul.getParameter("feel"));
+		vo.setBoardDeleteYn("N");
 		
 		MultipartFile file = mul.getFile("boardImgPath");
 		
@@ -85,6 +74,12 @@ public class BoardListServiceImpl implements BoardListService {
 			fvo.setFileDeleteYn("N");
 		}
 		mapper.boardFileSave(fvo);
+	}
+
+	@Override
+	public void boardDelete(int boardNo) {
+		mapper.boardDelete(boardNo);
+		mapper.fileDelete(boardNo);
 	}
 
 	

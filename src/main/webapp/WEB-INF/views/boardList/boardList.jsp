@@ -73,7 +73,9 @@
 	              <div class="appartment-image">
 	                <!-- Appartment Image  -->
 	                <c:if test="${fileData[status.index].fileStored != 'NONE'}">
-						<img src="${contextPath}/boardList/download.?file=${fileData[status.index].fileStored}">
+	                	<a href="${contextPath}/boardList/boardDetail?boardNo=${boardList.boardNo}">
+							<img src="${contextPath}/boardList/download.?file=${fileData[status.index].fileStored}">
+						</a>
 					</c:if>
 	              </div>
 	              <div class="appartment-info">

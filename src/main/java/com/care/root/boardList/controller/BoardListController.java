@@ -3,6 +3,7 @@ package com.care.root.boardList.controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -63,6 +64,15 @@ public class BoardListController {
 		FileCopyUtils.copy(fis, response.getOutputStream());
 		fis.close();
 	}
+	
+	@RequestMapping("boardDelete")
+	public String boardDelete(@RequestParam("boardNo") int boardNo, Model model) {
+		bls.boardDelete(boardNo);
+		model.addAttribute("msg", "글이 삭제되었습니다.");
+		model.addAttribute("url", "/boardList/AllBoardList");
+		return "redirect";
+	}
+	
 
 	
 

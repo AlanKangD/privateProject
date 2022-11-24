@@ -33,6 +33,16 @@
     <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
     <script src="${contextPath}/resources/js/main.js"></script>
     <!-- Scripts Ends -->
+    
+    <script type="text/javascript">
+    function deleteCheck() {
+    	if(confirm("정말 삭제하시겠습니까?") == true) {
+    		document.location.href="${contextPath}/boardList/boardDelete?boardNo=${boardData.boardNo}"
+    	} else {
+    		return false;
+    	}
+    }
+    </script>
 </head>
 <body>
 <jsp:include page="../common/headerDetail.jsp"/>
@@ -75,7 +85,20 @@
 					<br><br>
 				</c:if>
 				<p>${boardData.boardContent}</p>
-				<br>
+				<br><br>
+				<div class="getting-started" style="float: left;">
+                <!-- Get Started Button -->
+	                <li class="main-btn pointer text-center animate" style="width: 100px;">
+	                	<a href='${contextPath}/boardList/AllBoardList'>
+	                		이전
+	                	</a>
+	                </li>
+	                <li class="main-btn pointer text-center animate" style="width: 100px;">
+	                	<a onclick="deleteCheck();">
+	                		삭제
+	                	</a>
+	                </li>
+             	</div>
 	          </div>
 	        </div>
 	      </div>

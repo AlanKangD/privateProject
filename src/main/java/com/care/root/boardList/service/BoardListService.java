@@ -10,6 +10,7 @@ public interface BoardListService {
 	public void getAllBoardList(Model model);
 	public void boardDetail(int boardNo, Model model);
 	public void boardWriteSave(MultipartHttpServletRequest mul);
+	public void boardDelete(int boardNo);
 	
 	
 }

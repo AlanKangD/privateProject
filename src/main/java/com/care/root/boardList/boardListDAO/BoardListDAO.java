@@ -13,5 +13,7 @@ public interface BoardListDAO {
 	public List<FileVO> boardFileList();
 	public void boardWriteSave(BoardListVO vo);
 	public void boardFileSave(FileVO vo);
+	public void boardDelete(int boardNo);
+	public void fileDelete(int boardNo);
 
 }

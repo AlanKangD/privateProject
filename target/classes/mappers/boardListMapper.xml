@@ -10,6 +10,7 @@
 		<result column="board_content" property="boardContent"/>
 		<result column="board_feel" property="boardFeel"/>
 		<result column="board_sysdate" property="boardSysdate"/>
+		<result column="board_delete_yn" property="boardDeleteYn"/>
 	</resultMap>
 	
 	<resultMap type="com.care.root.VO.FileVO" id="FileData">
@@ -22,12 +23,12 @@
 	</resultMap>
 	
 	<select id="getAllBoardList" resultMap="boardList">
-		SELECT * FROM board
+		SELECT * FROM board WHERE board_delete_yn = 'N'
 	</select>
 	
 	<insert id="boardWriteSave">
-		INSERT INTO board (board_no, board_writer, board_title, board_content, board_feel, board_sysdate)
-		VALUES(NULL, #{boardWriter}, #{boardTitle}, #{boardContent}, #{boardFeel}, now())
+		INSERT INTO board (board_no, board_writer, board_title, board_content, board_feel, board_sysdate, board_delete_yn)
+		VALUES(NULL, #{boardWriter}, #{boardTitle}, #{boardContent}, #{boardFeel}, now(), #{boardDeleteYn})
 	</insert>
 	
 	<insert id="boardFileSave">
@@ -44,8 +45,16 @@
 	</select>
 	
 	<select id="boardFileList" resultMap="FileData">
-		SELECT * FROM file_info
+		SELECT * FROM file_info WHERE file_delete_yn = 'N'
 	</select>
+	
+	<update id="boardDelete">
+		UPDATE board SET board_delete_yn = 'Y' WHERE board_no = #{boardNo}
+	</update>
+	
+	<update id="fileDelete">
+		UPDATE file_info SET file_delete_yn = 'Y' WHERE board_no = #{boardNo}
+	</update>
 
 
 </mapper>
